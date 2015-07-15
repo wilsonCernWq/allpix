@@ -36,3 +36,5 @@ export OIVLIBS=/afs/cern.ch/eng/clic/software/Pixel_TestBeam_Software/OpenInvent
 
 
 source /afs/cern.ch/eng/clic/TBData/software/ROOT6_gcc48_python2.7/geant4/4.9.10.1p02/share/Geant4-10.1.2/geant4make/geant4make.sh
+
+export G4WORKDIR=/afs/cern.ch/work/q/qiwu/Allpix/allpix/g4workdir
