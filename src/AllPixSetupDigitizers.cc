@@ -15,6 +15,8 @@
 #include "AllPixMCTruthDigitizer.hh"
 #include "AllPixLETCalculatorDigitizer.hh"
 
+// Included by newdigitizer.sh script --> QiWu
+#include "AllPixQiWuDigitizer.hh"
 // __endofheader__
 
 // geometry
@@ -132,6 +134,13 @@ void AllPixEventAction::SetupDigitizers(){
 					dmPtr = static_cast<AllPixDigitizerInterface *> (dp);
 					cout << "    Setting up a " << digitizerName << " digitizer for det : " << detectorId << endl;
 				}
+ 
+// Included by newdigitizer.sh script --> QiWu
+else if (digitizerName == "QiWu") {
+			AllPixQiWuDigitizer * dp = new AllPixQiWuDigitizer(digitizerModulesNames[itr] , hcName, digitColectionName);
+			dmPtr = static_cast<AllPixDigitizerInterface *> (dp);
+			cout << "    Setting up a " << digitizerName << " digitizer for det : " << detectorId << endl;
+		}
  
         // __endofdigitlist__
    	    else {

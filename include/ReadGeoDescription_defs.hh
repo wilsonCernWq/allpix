@@ -3,6 +3,9 @@
  * Author: John Idarraga <idarraga@cern.ch> , 2010
  */
 
+// Wu Qi extension
+#define __eff_rad_S "eff_rad" // WU QI
+
 // expected strings in the xml file
 // forced by the dtd
 
