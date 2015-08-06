@@ -152,10 +152,10 @@
 
 ####################################################################
 # Write Telescope files
-/allpix/timepixtelescope/setFolderPath ./FEI4Telescope0/Run_0
-/allpix/timepixtelescope/setEventIDcolumn 0
-/allpix/timepixtelescope/setSumTOT 1
-/allpix/timepixtelescope/write 1
+#/allpix/timepixtelescope/setFolderPath ./FEI4Telescope0/Run_0
+#/allpix/timepixtelescope/setEventIDcolumn 0
+#/allpix/timepixtelescope/setSumTOT 1
+#/allpix/timepixtelescope/write 1
 
 ####################################################################
 # Source GPS
