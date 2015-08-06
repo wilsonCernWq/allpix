@@ -1,6 +1,5 @@
 ####################################################################
 # Test sensors
-
 /control/alias appPosZ -4.750
 /control/alias enhanceZ 5.0
 
@@ -10,10 +9,8 @@
 #/allpix/det/setPosition  0.0 0.0 194.0 mm
 #/allpix/det/setRotation  0.0 180.0 90.0 deg
 #/allpix/det/setLowTHL 13. keV 
-
 #/allpix/extras/setAppliancePosition  -4.3 28.2 {appPosZ}  mm
 #/allpix/extras/setWrapperEnhancement  0.0  0.0 {enhanceZ} mm
-
 # Appliances
 #   Extra volumes placed with respect to the center of the wrapper.
 #   The wrapper is the envolvent volume of the medipix.  This volumes
@@ -27,28 +24,21 @@
 ## /allpix/extras/setWrapperEnhancement 0. 0. 5000. um
 
 ##### end of detector 0 #####
-
 # Detector 1
 #/allpix/det/setId        101
 #/allpix/det/setPosition -4.3 28.2 555.65 mm
 #/allpix/det/setRotation  0.0 180.0 180.0 deg
 #/allpix/det/setLowTHL 13. keV
-
 #/allpix/extras/setAppliancePosition  -4.3 28.2 {appPosZ}  mm
 #/allpix/extras/setWrapperEnhancement  0.0 0.0  {enhanceZ} mm
 
 ####################################################################
 # FEI4 DUT
 /allpix/det/setMaxStepLengthSensor 300  um
-
-
 /allpix/det/setId        206
 /allpix/det/setPosition  0.0 0.0 161.0 mm
 /allpix/det/setRotation  0.0 0.0 0.0 deg
 /allpix/det/setLowTHL    0.001 keV
-
-
-
 
 # Al Holder
 #/allpix/extras/setTestStructureType 1
@@ -61,7 +51,6 @@
 /allpix/det/setRotation  0.0 0.0 0.0 deg
 /allpix/det/setLowTHL    0.001 keV
 
-
 # Al Holder
 #/allpix/extras/setTestStructureType 1
 #/allpix/extras/setTestStructurePosition 0. 0. 150. mm
@@ -72,7 +61,6 @@
 /allpix/det/setPosition  0.0 0.0 50.0 mm
 /allpix/det/setRotation  0.0 0.0 90.0 deg
 /allpix/det/setLowTHL    0.001 keV
-
 
 # Al Holder
 #/allpix/extras/setTestStructureType 1
@@ -85,7 +73,6 @@
 /allpix/det/setRotation  0.0 0.0 0.0 deg
 /allpix/det/setLowTHL    0.001 keV
 
-
 # Al Holder
 #/allpix/extras/setTestStructureType 1
 #/allpix/extras/setTestStructurePosition 0. 0. 693.8 mm
@@ -96,7 +83,6 @@
 /allpix/det/setPosition  0.0 0.0 570.0 mm
 /allpix/det/setRotation  0.0 0.0 0.0 deg
 /allpix/det/setLowTHL    0.001 keV
-
 
 # Al Holder
 #/allpix/extras/setTestStructureType 1
@@ -109,7 +95,6 @@
 /allpix/det/setRotation  0.0 0.0 90.0 deg
 /allpix/det/setLowTHL    0.001 keV
 
-# 13.
 # Al Holder
 #/allpix/extras/setTestStructureType 1
 #/allpix/extras/setTestStructurePosition 0. 0. 993.8 mm
@@ -120,10 +105,6 @@
 /allpix/det/setPosition  0.0 0.0 675.0 mm
 /allpix/det/setRotation  0.0 0.0 0.0 deg
 /allpix/det/setLowTHL    0.001 keV
-
-
-
-
 
 ####################################################################
 # Build detectors
@@ -181,12 +162,9 @@
 /gps/particle pi+
 /gps/pos/type Plane
 /gps/pos/shape Rectangle
-
 /gps/pos/centre 0.0 0.0 -1000.0 mm
 /gps/pos/halfy 2500. um
 /gps/pos/halfx 2000. um
-
-
 
 #/gps/ang/rot1 0 0 1
 #/gps/ang/rot2 0 -1 0
@@ -199,37 +177,24 @@
 #/gps/pos/halfy 200000. um
 #/gps/pos/halfx 2500000. um
 #/gps/pos/sigma_x 2  mm
-# the spread in y direction is stronger
-# /gps/pos/sigma_y 1 mm
-#/gps/ang/type beam2d
 
+# the spread in y direction is stronger
+#/gps/pos/sigma_y 1 mm
+#/gps/ang/type beam2d
 
 /gps/direction 0 0 1
 
-
 #/gps/ang/type iso
-
-#/gps/ang/minphi 360\  deg
+#/gps/ang/minphi 360  deg
 #/gps/ang/maxphi 350  deg
-
 #/gps/ang/mintheta 80.0 deg
 #/gps/ang/maxtheta 110.0 deg
 
-
-
 /gps/energy 180  GeV
-
-
-
-
-
-
 
 #/gps/ang/type beam1d
 #/gps/ang/sigma_x 0.03 rad
 #/gps/ang/sigma_y 0.3 rad
-
-
 
 ####################################################################
 # Shoot
@@ -237,8 +202,7 @@
 /allpix/beam/type const 1
 /allpix/beam/on
 ###################################################################
-
-/allpix/timepixtelescope/setFolderPath ./FEI4Telescope0/Run_1
+/allpix/timepixtelescope/setFolderPath /home/qiwu/FEI4Telescope0/Run_1
 /allpix/timepixtelescope/setEventIDcolumn 0
 /allpix/timepixtelescope/setSumTOT 1
 /allpix/timepixtelescope/write 1
@@ -246,7 +210,3 @@
 /allpix/beam/frames  50000
 /allpix/beam/type const 1
 /allpix/beam/on
-
-
-
-
