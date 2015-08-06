@@ -111,6 +111,7 @@
 /allpix/phys/Physics emstandard_opt3
 /run/initialize
 /allpix/det/update
+
 ####################################################################
 # Verbose control
 #/run/verbose 0
@@ -165,10 +166,10 @@
 /gps/pos/centre 0.0 0.0 -1000.0 mm
 /gps/pos/halfy 2500. um
 /gps/pos/halfx 2000. um
+/gps/direction 0 0 1
+/gps/energy 180  GeV
 
-#/gps/ang/rot1 0 0 1
-#/gps/ang/rot2 0 -1 0
-
+# Source GPS
 #/gps/particle proton
 #/gps/pos/type Beam
 #/gps/pos/shape Circle
@@ -177,20 +178,18 @@
 #/gps/pos/halfy 200000. um
 #/gps/pos/halfx 2500000. um
 #/gps/pos/sigma_x 2  mm
+#/gps/pos/sigma_y 1 mm # the spread in y direction is stronger
+#/gps/direction 0 0 1
+#/gps/energy 180  GeV
 
-# the spread in y direction is stronger
-#/gps/pos/sigma_y 1 mm
 #/gps/ang/type beam2d
-
-/gps/direction 0 0 1
-
+#/gps/ang/rot1 0 0 1
+#/gps/ang/rot2 0 -1 0
 #/gps/ang/type iso
 #/gps/ang/minphi 360  deg
 #/gps/ang/maxphi 350  deg
 #/gps/ang/mintheta 80.0 deg
 #/gps/ang/maxtheta 110.0 deg
-
-/gps/energy 180  GeV
 
 #/gps/ang/type beam1d
 #/gps/ang/sigma_x 0.03 rad
