@@ -111,9 +111,7 @@ void AllPixFEI4Digitizer::Digitize(){
       /*
 	if((xCoord<0.125 && xCoord>0.100)  || (xCoord<0.075 && xCoord>0.060) || (xCoord<0.025 && xCoord>0.020) || (xCoord<-0.023 && xCoord>-0.024) ) {
 	flag=1;
-
 	}
-  
       */
 
       if((yCoord<0.025 && yCoord>0.017)  || (yCoord>-0.004 && yCoord<0.004)  || (yCoord>-0.020 && yCoord<-0.018) ) {
@@ -121,8 +119,8 @@ void AllPixFEI4Digitizer::Digitize(){
       }
 
       if(flag==0 || flag1==1 )continue;
-      //      if(std::pow(xCoord/0.05,2)+std::pow(yCoord/0.01,2)>1) continue ; //ellipse
-      //  if(std::pow(xCoord,2)+std::pow(yCoord,2)>0.0004) continue;     //circle
+      // if(std::pow(xCoord/0.05,2)+std::pow(yCoord/0.01,2)>1) continue ; //ellipse
+      // if(std::pow(xCoord,2)+std::pow(yCoord,2)>0.0004) continue;     //circle
       X.push_back(xCoord*1000+125);
       Y.push_back(yCoord*1000+25);
 
@@ -154,16 +152,12 @@ void AllPixFEI4Digitizer::Digitize(){
   if(total_iter==100000 && hcID==4){
     TFile *tin1;
     tin1 = new TFile("In_Pixel.root","UPDATE");
-
     TH2F*  h1  = new TH2F("h1","IN_PIXEL_OCCUPANCY_SIMULATION_Plane",250,-0.125,0.125,50,-0.025,0.025);
-
     for(unsigned int i=0; i<X1.size();i++){
       h1->Fill(X1[i],Y1[i]);      
     }
-
     h1->Write();
     tin1->Close();
-
   }
 
   // Now create digits, one per pixel
@@ -181,35 +175,33 @@ void AllPixFEI4Digitizer::Digitize(){
   // provides you with a pointer to the geometry description.
   // See class AllPixGeoDsc !
        
-  for( ; pCItr != pixelsContent.end() ; pCItr++)
-    { 
-		
-      if((*pCItr).second > m_digitIn.thl) // over threshold !
-	{
+  for( ; pCItr != pixelsContent.end() ; pCItr++) { 
+    if((*pCItr).second > m_digitIn.thl) // over threshold !
+      {
                           
-	  // Create one digit per pixel, I need to look at all the pixels first
-	  AllPixFEI4Digit * digit = new AllPixFEI4Digit;
-	  digit->SetPixelIDX((*pCItr).first.first);
-	  digit->SetPixelIDY((*pCItr).first.second);
-	  digit->IncreasePixelCounts(); // Counting mode
+	// Create one digit per pixel, I need to look at all the pixels first
+	AllPixFEI4Digit * digit = new AllPixFEI4Digit;
+	digit->SetPixelIDX((*pCItr).first.first);
+	digit->SetPixelIDY((*pCItr).first.second);
+	digit->IncreasePixelCounts(); // Counting mode
 
-	  m_digitsCollection->insert(digit);
+	m_digitsCollection->insert(digit);
                   
-	}
-    }
+      }
+  }
 
-// ---> Mute Mode <--- Wu Qi
+  // ---> Mute Mode <--- Wu Qi
   if (!qiwu_mute) {
 
-  G4int dc_entries = m_digitsCollection->entries();
-  if(dc_entries > 0){
-    G4cout << "--------> Digits Collection : " << collectionName[0]
-	   << "(" << m_hitsColName[0] << ")"
-	   << " contains " << dc_entries
-	   << " digits" << G4endl;
+    G4int dc_entries = m_digitsCollection->entries();
+    if(dc_entries > 0){
+      G4cout << "--------> Digits Collection : " << collectionName[0]
+	     << "(" << m_hitsColName[0] << ")"
+	     << " contains " << dc_entries
+	     << " digits" << G4endl;
+    }
   }
-}
-// ---> Mute Mode <--- Wu Qi
+  // ---> Mute Mode <--- Wu Qi
 
   StoreDigiCollection(m_digitsCollection);
 }
