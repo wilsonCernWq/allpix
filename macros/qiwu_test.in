@@ -102,7 +102,8 @@
 /vis/scene/add/axes 0. 0. 0. 10. cm
 /vis/scene/add/volume World -1 2
 /vis/viewer/set/style surface
-/vis/open OIX 1024x768-100+100
+
+#/vis/open OIX 1024x768-100+100
 
 #/vis/open OGLIXm 1024x768-100+100
 #/vis/open RayTracer
@@ -140,20 +141,20 @@
 
 ####################################################################
 # Source GPS rectangle
-#/gps/particle pi-
-#/gps/pos/type Plane
-#/gps/pos/shape Rectangle
-#/gps/pos/centre 0.0 0.0 -1000.0 mm
-#/gps/pos/halfy 5000. um
-#/gps/pos/halfx 5000. um
-#/gps/direction 0 0 1
+/gps/particle pi-
+/gps/pos/type Plane
+/gps/pos/shape Rectangle
+/gps/pos/centre 0.0 0.0 -1000.0 mm
+/gps/pos/halfy 5500. um
+/gps/pos/halfx 5500. um
+/gps/direction 0 0 1
 
 # Source GPS circle
-/gps/particle e-
-/gps/pos/type Beam
-/gps/pos/sigma_r 5.0 mm
-/gps/pos/centre 0.0 0.0 -100.0 mm
-/gps/direction  0 0 1
+#/gps/particle e-
+#/gps/pos/type Beam
+#/gps/pos/sigma_r 5.0 mm
+#/gps/pos/centre 0.0 0.0 -100.0 mm
+#/gps/direction  0 0 1
 
 # Source GPS energy
 /gps/energy 180 GeV
