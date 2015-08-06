@@ -152,10 +152,10 @@
 
 ####################################################################
 # Write Telescope files
-#/allpix/timepixtelescope/setFolderPath ./FEI4Telescope0/Run_0
-#/allpix/timepixtelescope/setEventIDcolumn 0
-#/allpix/timepixtelescope/setSumTOT 1
-#/allpix/timepixtelescope/write 1
+/allpix/timepixtelescope/setFolderPath /home/qiwu/FEI4Telescope0/Run_0
+/allpix/timepixtelescope/setEventIDcolumn 0
+/allpix/timepixtelescope/setSumTOT 1
+/allpix/timepixtelescope/write 1
 
 ####################################################################
 # Source GPS
@@ -202,11 +202,3 @@
 /allpix/beam/type const 1
 /allpix/beam/on
 ###################################################################
-/allpix/timepixtelescope/setFolderPath /home/qiwu/FEI4Telescope0/Run_1
-/allpix/timepixtelescope/setEventIDcolumn 0
-/allpix/timepixtelescope/setSumTOT 1
-/allpix/timepixtelescope/write 1
-
-/allpix/beam/frames  50000
-/allpix/beam/type const 1
-/allpix/beam/on
