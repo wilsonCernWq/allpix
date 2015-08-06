@@ -100,7 +100,6 @@
 <npix_y>164</npix_y>
 <npix_z>0</npix_z>
 
-
 <sensor_resistivity>5000.0</sensor_resistivity>
 
 <pixsize_x units="um">200.</pixsize_x>
@@ -132,14 +131,63 @@
 <sensor_posy units="mm">28.2</sensor_posy>
 <sensor_posz units="mm">0.</sensor_posz>
 
-
 <bump_radius units="um">9.0</bump_radius>
 <bump_height units="um">20.0</bump_height>
 <bump_offset_x units="um">-170.0</bump_offset_x>
 <bump_offset_y units="um">0.0</bump_offset_y>
 <bump_dr units="um">2.0</bump_dr>
 
+<pcb_hx units="mm">26.5</pcb_hx>
+<pcb_hy units="mm">47.0</pcb_hy>
+<pcb_hz units="mm">0.80</pcb_hz>
 
+</pixeldet>
+
+<!-- FEI4 ~ Francesco ~ DUT -->
+<pixeldet id="206">
+
+<digitizer>FEI4</digitizer>
+
+<npix_x>80</npix_x>
+<npix_y>168</npix_y>
+<npix_z>0</npix_z>
+
+<pixsize_x units="um">125.</pixsize_x>
+<pixsize_y units="um">25.</pixsize_y>
+<pixsize_z units="um">125.</pixsize_z>
+
+<chip_hx units="um">10000</chip_hx>
+<chip_hy units="um">9000</chip_hy>
+<chip_hz units="um">195.0</chip_hz>
+
+<chip_offsetx units="um">0.</chip_offsetx>
+<chip_offsety units="um">-1020.</chip_offsety>
+<chip_offsetz units="um">0.</chip_offsetz>
+
+<bump_radius units="um">9.0</bump_radius>
+<bump_height units="um">20.0</bump_height>
+<bump_offset_x units="um">-70.0</bump_offset_x>
+<bump_offset_y units="um">0.0</bump_offset_y>
+<bump_dr units="um">2.0</bump_dr>
+
+<sensor_resistivity>5000.0</sensor_resistivity>
+
+<chip_posx units="um">0.</chip_posx>
+<chip_posy units="um">0.</chip_posy>
+<chip_posz units="um">0.</chip_posz>
+
+<sensor_hx units="um">10000</sensor_hx>
+<sensor_hy units="um">9000</sensor_hy>
+<sensor_hz units="um">125.0</sensor_hz>
+
+<sensor_gr_excess_htop units="um">100.0</sensor_gr_excess_htop>
+<sensor_gr_excess_hbottom units="um">100.0</sensor_gr_excess_hbottom>
+<sensor_gr_excess_hright units="um">100.0</sensor_gr_excess_hright>
+<sensor_gr_excess_hleft units="um">100.0</sensor_gr_excess_hleft>
+
+<sensor_posx units="mm">-4.3</sensor_posx>
+<sensor_posy units="mm">28.2</sensor_posy>
+<sensor_posz units="mm">0.</sensor_posz>
 
 <pcb_hx units="mm">26.5</pcb_hx>
 <pcb_hy units="mm">47.0</pcb_hy>
@@ -148,7 +196,7 @@
 </pixeldet>
 
 <!-- FEI4 -->
-<pixeldet id="200,201">
+<pixeldet id="200,201,202,203,204,205">
 
 <digitizer>FEI3Standard</digitizer>
 
@@ -164,7 +212,6 @@
 <chip_hy units="um">9000</chip_hy>
 <chip_hz units="um">195.0</chip_hz>
 
-
 <chip_offsetx units="um">0.</chip_offsetx>
 <chip_offsety units="um">-1020.</chip_offsety>
 <chip_offsetz units="um">0.</chip_offsetz>
@@ -174,8 +221,6 @@
 <bump_offset_x units="um">-70.0</bump_offset_x>
 <bump_offset_y units="um">0.0</bump_offset_y>
 <bump_dr units="um">2.0</bump_dr>
-
-
 
 <sensor_resistivity>5000.0</sensor_resistivity>
 
@@ -730,7 +775,6 @@
 </pixeldet>
 
 
-
 <pixeldet id="1002">
 
 <digitizer>Timepix</digitizer>
@@ -782,7 +826,6 @@
 <Saturation_Energy>350.</Saturation_Energy>
 
 </pixeldet>
-
 
 
 <pixeldet id="1003">
@@ -838,8 +881,6 @@
 </pixeldet>
 
 
-
-
 <pixeldet id="1004">
 
 <digitizer>Timepix</digitizer>
@@ -892,6 +933,7 @@
 
 </pixeldet>
 
+
 <pixeldet id="1101">
 
 <digitizer>Timepix</digitizer>
@@ -943,7 +985,6 @@
 <Saturation_Energy>350.</Saturation_Energy>
 
 </pixeldet>
-
 
 
 <pixeldet id="1102">
@@ -999,7 +1040,6 @@
 </pixeldet>
 
 
-
 <pixeldet id="1103">
 
 <digitizer>Timepix</digitizer>
@@ -1051,8 +1091,6 @@
 <Saturation_Energy>350.</Saturation_Energy>
 
 </pixeldet>
-
-
 
 
 <pixeldet id="1104">
@@ -1107,6 +1145,7 @@
 
 </pixeldet>
 
+
 <pixeldet id="1201">
 
 <digitizer>Timepix</digitizer>
@@ -1158,7 +1197,6 @@
 <Saturation_Energy>350.</Saturation_Energy>
 
 </pixeldet>
-
 
 
 <pixeldet id="1202">
@@ -1214,7 +1252,6 @@
 </pixeldet>
 
 
-
 <pixeldet id="1203">
 
 <digitizer>Timepix</digitizer>
@@ -1266,8 +1303,6 @@
 <Saturation_Energy>350.</Saturation_Energy>
 
 </pixeldet>
-
-
 
 
 <pixeldet id="1204">
