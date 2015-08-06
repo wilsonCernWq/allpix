@@ -1,0 +1,7 @@
+#!/bin/bash
+TRASH=~/.local/share/Trash/files
+mv Hits_BoxSD_*_HitsCollection.root $TRASH
+mv MPXNtuple_allPix_det_*.root $TRASH
+mv lciobridge_allpix_dut.txt $TRASH
+mv lciobridge_allpix.txt $TRASH
+mv HitsListChargeDiffusionModel.txt $TRASH
