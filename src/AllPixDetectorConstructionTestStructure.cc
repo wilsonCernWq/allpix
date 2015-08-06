@@ -858,6 +858,11 @@ void AllPixDetectorConstruction::BuildTestStructure(int){
 			labelSD = "sdscint";
 			labelSD += cntr;
 			AllPixTrackerSD * scintTrack = new AllPixTrackerSD( labelSD.Data(), (*scintItr), 0);
+
+			// ---> Mute Mode <--- Wu Qi
+			scintTrack->MuteMode(qiwu_mute);
+			// ---> Mute Mode <--- Wu Qi
+
 			SDman->AddNewDetector( scintTrack );
 			scint_log->SetSensitiveDetector( scintTrack );
 			cntr++;

@@ -83,7 +83,7 @@ using namespace std;
 #else
 #include "G4UIterminal.hh"
 #endif
- */
+*/
 
 #include "TH1F.h"
 
@@ -128,8 +128,15 @@ int main(int argc, char** argv)
 	G4RunManager* runManager = new G4RunManager;
 
 	// UserInitialization classes - mandatory;
-	AllPixDetectorConstruction * detector =
-			new AllPixDetectorConstruction();
+	AllPixDetectorConstruction * detector = NULL;
+	// ---> Mute Mode <--- Wu Qi
+	if (argc-1 == _RUN_BATCH && argv[_RUN_BATCH][0] == 'q') {   // batch mode 
+	  detector = new AllPixDetectorConstruction(true);
+	} else {
+	  detector = new AllPixDetectorConstruction(false);
+	}
+	// ---> Mute Mode <--- Wu Qi
+			
 
 	runManager->SetUserInitialization(detector);
 
@@ -148,6 +155,7 @@ int main(int argc, char** argv)
 	// Particle gun
 	SourceType st = _GeneralParticleSource;
 	//SourceType st = _HEPEvtInterface;
+
 	AllPixPrimaryGeneratorAction * gen_action = new AllPixPrimaryGeneratorAction(st);
 	runManager->SetUserAction(gen_action);
 
@@ -155,7 +163,16 @@ int main(int argc, char** argv)
 	run_action->GetPrimaryGeneratorMessenger(gen_action);
 
 	// Digits ! --> calls Digitize, and makes ntuple to store digits
-	AllPixEventAction * event_action = new AllPixEventAction(run_action);
+	AllPixEventAction * event_action = NULL;
+
+	// ---> Mute Mode <--- Wu Qi
+	if (argc-1 == _RUN_BATCH && argv[_RUN_BATCH][0] == 'q') {   // batch mode 
+	  event_action = new AllPixEventAction(run_action, true);
+	} else {
+	  event_action = new AllPixEventAction(run_action);
+	}
+	// ---> Mute Mode <--- Wu Qi
+
 	runManager->SetUserAction(event_action);
 
 	// Initialize G4 kernel
@@ -185,13 +202,12 @@ int main(int argc, char** argv)
 	// Get the pointer to the User Interface manager
 	//
 	G4UImanager* UI = G4UImanager::GetUIpointer();
-
 	G4String command = "/control/execute ";
 
 	if (argc-1 == _RUN_BATCH)   // batch mode
 	{
-		G4String command = "/control/execute ";
-		G4String fileName = argv[_MACRO];
+		//G4String fileName = argv[_MACRO]; ?? wrong command ?? -- Wu,Qi
+		//G4String command = "/control/execute "; ?? wrong command ?? -- Wu,Qi
 		UI->ApplyCommand(command+fileName);
 	}
 	else
@@ -199,27 +215,27 @@ int main(int argc, char** argv)
 		G4UIsession * session = 0;
 
 		/*
-#if defined(G4UI_USE_TCSH)
-      session = new G4UIterminal(new G4UItcsh);      
-#elif defined(G4UI_USE_XM)
-      session = new G4UIXm(argc,argv);
-      UI->ApplyCommand("/control/execute visTutor/gui.mac");      
-#elif defined(G4UI_USE_WIN32)
-      session = new G4UIWin32();
-      UI->ApplyCommand("/control/execute visTutor/gui.mac");      
-#elif defined(G4UI_USE_QT)
-      session = new G4UIQt(argc,argv);
-      UI->ApplyCommand("/control/execute visTutor/gui.mac");      
-#else
-      session = new G4UIterminal();
-#endif
+		  #if defined(G4UI_USE_TCSH)
+		  session = new G4UIterminal(new G4UItcsh);      
+		  #elif defined(G4UI_USE_XM)
+		  session = new G4UIXm(argc,argv);
+		  UI->ApplyCommand("/control/execute visTutor/gui.mac");      
+		  #elif defined(G4UI_USE_WIN32)
+		  session = new G4UIWin32();
+		  UI->ApplyCommand("/control/execute visTutor/gui.mac");      
+		  #elif defined(G4UI_USE_QT)
+		  session = new G4UIQt(argc,argv);
+		  UI->ApplyCommand("/control/execute visTutor/gui.mac");      
+		  #else
+		  session = new G4UIterminal();
+		  #endif
 
 
-#ifdef G4VIS_USE
-      UI->ApplyCommand(command+fileName);
-      //AllPixPostDetConstruction::GetInstance()->WriteTracks("tracks_G4.root");
-#endif
-		 */
+		  #ifdef G4VIS_USE
+		  UI->ApplyCommand(command+fileName);
+		  //AllPixPostDetConstruction::GetInstance()->WriteTracks("tracks_G4.root");
+		  #endif
+		//*/
 
 
 		//session = new G4UIQt(argc,argv);

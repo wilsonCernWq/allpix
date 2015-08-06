@@ -616,7 +616,8 @@ void AllPixFEI4RadDamageDigitizer::Digitize(){
 		m_digitsCollection->insert(digit);
 	      }
 	    }
-
+// ---> Mute Mode <--- Wu Qi
+if (!qiwu_mute) {
 	G4int dc_entries = m_digitsCollection->entries();
 	if(dc_entries > 0)
 	{
@@ -625,6 +626,8 @@ void AllPixFEI4RadDamageDigitizer::Digitize(){
 					<< " contains " << dc_entries
 					 << " digits" << G4endl;
 	}
+}
+// ---> Mute Mode <--- Wu Qi
 
 	StoreDigiCollection(m_digitsCollection);
 

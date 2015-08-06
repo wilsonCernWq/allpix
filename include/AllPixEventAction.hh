@@ -19,22 +19,27 @@ class AllPixGeoDsc;
 class AllPixEventAction : public G4UserEventAction {
 
 public:
+  // ---> Mute Mode <--- Qi Wu
+  AllPixEventAction(AllPixRunAction *, bool);
+  // -------------------
 
-	AllPixEventAction(AllPixRunAction *);
-	virtual ~AllPixEventAction();
+  AllPixEventAction(AllPixRunAction *);
+  virtual ~AllPixEventAction();
 
-	void BeginOfEventAction(const G4Event*);
-	void   EndOfEventAction(const G4Event*);
+  void BeginOfEventAction(const G4Event*);
+  void   EndOfEventAction(const G4Event*);
 
-	void SetDetectorDigitInput(G4double, G4int);
-	//void SetupDigitizers(G4String, AllPixGeoDsc *);
-	void SetupDigitizers();
-	G4String GetNewName(G4String, G4String, G4String);
-	G4int GetNumberOfDigitizers() { return m_nDigitizers; };
-	G4int GetNumberOfHC() { return m_nHC; };
+  void SetDetectorDigitInput(G4double, G4int);
+  //void SetupDigitizers(G4String, AllPixGeoDsc *);
+  void SetupDigitizers();
+  G4String GetNewName(G4String, G4String, G4String);
+  G4int GetNumberOfDigitizers() { return m_nDigitizers; };
+  G4int GetNumberOfHC() { return m_nHC; };
 
 private:
-
+  // ---> Mute Mode <--- Qi Wu
+  bool qiwu_mute;
+  // -------------------
 	AllPixRunAction * m_run_action;
 	vector<AllPixDigitizerInterface *> m_digiPtrs;
 

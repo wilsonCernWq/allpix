@@ -12,6 +12,17 @@
 // geometry
 #include "ReadGeoDescription.hh"
 
+// ---> Mute Mode <--- Qi Wu
+AllPixEventAction::AllPixEventAction(AllPixRunAction* run, bool mode){
+
+  qiwu_mute = mode;
+  m_run_action = run;
+  m_nHC = 0;
+  m_nDigitizers = 0;
+
+}
+// -------------------
+
 AllPixEventAction::AllPixEventAction(AllPixRunAction* run){
 
 	m_run_action = run;
@@ -71,6 +82,11 @@ void AllPixEventAction::EndOfEventAction(const G4Event * evt)
 
 	for(G4int itr = 0 ; itr < m_nDigitizers ; itr++){
 		myDM = (AllPixMimosa26Digitizer*)fDM->FindDigitizerModule( digitizerModulesNames[itr] );
+
+		// ---> Mute Mode <--- Wu Qi
+		myDM->MuteMode(qiwu_mute);
+		// ---> Mute Mode <--- Wu Qi
+
 		myDM->SetPrimaryVertex(pv);
 		myDM->Digitize();
 	}

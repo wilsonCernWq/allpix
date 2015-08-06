@@ -60,7 +60,10 @@ AllPixTrackerSD::AllPixTrackerSD(G4String name,
 		G4ThreeVector relPosSD,
 		AllPixGeoDsc * gD,
 		G4RotationMatrix * rot)
-:G4VSensitiveDetector(name)
+ :G4VSensitiveDetector(name), 
+  // ---> Mute Mode <--- Wu Qi
+  qiwu_mute(false)
+  // ---> Mute Mode <--- Wu Qi
 {
 
 	m_thisHitsCollectionName = name + "_HitsCollection";
@@ -81,7 +84,10 @@ AllPixTrackerSD::AllPixTrackerSD(G4String name,
  * not actual pixel detectors
  */
 AllPixTrackerSD::AllPixTrackerSD(G4String name, G4ThreeVector absPos, G4RotationMatrix * rot)
-:G4VSensitiveDetector(name)
+  :G4VSensitiveDetector(name),
+   // ---> Mute Mode <--- Wu Qi
+   qiwu_mute(false) 
+   // ---> Mute Mode <--- Wu Qi
 {
 
 	m_thisHitsCollectionName = name + "_HitsCollection";
@@ -272,6 +278,9 @@ G4bool AllPixTrackerSD::ProcessHits(G4Step * aStep, G4TouchableHistory *)
 
 void AllPixTrackerSD::EndOfEvent(G4HCofThisEvent*)
 {
+  // ---> Mute Mode <--- Wu Qi
+  if (!qiwu_mute) {
+  // ---> Mute Mode <--- Wu Qi
 
 	G4int NbHits = hitsCollection->entries();
 	if(NbHits > 0)
@@ -279,7 +288,7 @@ void AllPixTrackerSD::EndOfEvent(G4HCofThisEvent*)
 
 	// clear the Set of pointers to hitCollection used for verification
 	m_hitsCollectionSet.clear();
-
+  }
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

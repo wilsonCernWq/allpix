@@ -60,7 +60,9 @@ public:
   AllPixTrackerSD(G4String, G4ThreeVector, G4ThreeVector, AllPixGeoDsc *, G4RotationMatrix *);
   AllPixTrackerSD(G4String, G4ThreeVector, G4RotationMatrix *);
   ~AllPixTrackerSD();
-  
+
+  void MuteMode(bool mode) { qiwu_mute = mode; }
+
   void Initialize(G4HCofThisEvent*);
   G4bool ProcessHits(G4Step*, G4TouchableHistory*);
   void EndOfEvent(G4HCofThisEvent*);
@@ -68,6 +70,10 @@ public:
   G4String GetHitsCollectionName(){ return m_thisHitsCollectionName; };
 
 private:
+  // ---> Mute Mode <--- Wu Qi
+  bool qiwu_mute;
+  // ---> Mute Mode <--- Wu Qi
+
 
   AllPixTrackerHitsCollection* hitsCollection;
   G4ThreeVector m_absolutePosOfWrapper; // Absolute position of Wrapper

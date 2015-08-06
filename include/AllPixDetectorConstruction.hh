@@ -71,7 +71,7 @@ class AllPixDetectorConstruction : public G4VUserDetectorConstruction
 
 public:
 
-	AllPixDetectorConstruction();
+	AllPixDetectorConstruction(bool mode = false);
 	~AllPixDetectorConstruction();
 	void DefineSensitiveDetector();
 	void VolumesG4Properties();
@@ -133,6 +133,10 @@ public:
 	G4VPhysicalVolume* Construct();
 
 private:
+  // ---> Mute Mode <--- Wu Qi
+  bool qiwu_mute;
+  // ---> Mute Mode <--- Wu Qi
+
 	// flags
 	bool m_clearanceToBuildGeometry;
 

@@ -53,7 +53,13 @@ public:
 	virtual ~AllPixDigitizerInterface(){};
 
 	virtual void SetPrimaryVertex(G4PrimaryVertex *) = 0;
+
+  // ---> Mute Mode < --- Wu Qi
+  void MuteMode(bool mode = false) { qiwu_mute = mode; }
+  // ---> Mute Mode < --- Wu Qi
+
 	virtual void Digitize () = 0;
+
 	virtual void SetDetectorDigitInputs(G4double) = 0;
 
 	void SetDetectorGeoDscPtr(AllPixGeoDsc * gD){ m_gD = gD; };
@@ -61,7 +67,12 @@ public:
 protected:
 	AllPixGeoDsc * GetDetectorGeoDscPtr(){ return m_gD; }; // first detector
 
+  // ---> Mute Mode < --- Wu Qi
+  bool qiwu_mute;
+  // ---> Mute Mode < --- Wu Qi
+
 private:
+
 	AllPixGeoDsc * m_gD;
 
 };

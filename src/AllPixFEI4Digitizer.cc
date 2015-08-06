@@ -75,8 +75,16 @@ void AllPixFEI4Digitizer::Digitize(){
       NpY=(*hitsCollection)[itr-1]->GetPixelNbY();
     }      
     flag1=0;
-    if((NpX==(*hitsCollection)[itr]->GetPixelNbX() && NpY==(*hitsCollection)[itr]->GetPixelNbY()) || (NpX==(*hitsCollection)[itr]->GetPixelNbX()+1 && NpY==(*hitsCollection)[itr]->GetPixelNbY()) || NpX==(*hitsCollection)[itr]->GetPixelNbX() && (NpY==(*hitsCollection)[itr]->GetPixelNbY()+1) || (NpX==(*hitsCollection)[itr]->GetPixelNbX()-1 && NpY==(*hitsCollection)[itr]->GetPixelNbY()) || (NpX==(*hitsCollection)[itr]->GetPixelNbX() && NpY==(*hitsCollection)[itr]->GetPixelNbY()-1)   )flag1=1;
-
+    if((NpX==(*hitsCollection)[itr]->GetPixelNbX() && 
+	NpY==(*hitsCollection)[itr]->GetPixelNbY()) ||
+       (NpX==(*hitsCollection)[itr]->GetPixelNbX()+1 &&
+	NpY==(*hitsCollection)[itr]->GetPixelNbY()) ||
+       NpX==(*hitsCollection)[itr]->GetPixelNbX() &&
+       (NpY==(*hitsCollection)[itr]->GetPixelNbY()+1) ||
+       (NpX==(*hitsCollection)[itr]->GetPixelNbX()-1 &&
+	NpY==(*hitsCollection)[itr]->GetPixelNbY()) ||
+       (NpX==(*hitsCollection)[itr]->GetPixelNbX() &&
+	NpY==(*hitsCollection)[itr]->GetPixelNbY()-1))flag1=1;
 
     if(hcID==0){
       TRandom* random = new TRandom;
@@ -85,7 +93,6 @@ void AllPixFEI4Digitizer::Digitize(){
       xCoord = (*hitsCollection)[itr]->GetPosWithRespectToPixel().x();
       yCoord = (*hitsCollection)[itr]->GetPosWithRespectToPixel().y();
       //  if(std::pow(xCoord/0.05,2)+std::pow(yCoord/0.005,2)>1) continue; ellipse
-
 
       /*
       //ROI inside the pixel
@@ -96,11 +103,9 @@ void AllPixFEI4Digitizer::Digitize(){
       if(ran<0.2) continue;
       }
 
-
       if(((xCoord<0.100 && xCoord>0.050) || (xCoord<-0.050 && xCoord>-0.100)) && (yCoord<0.010 || yCoord>-0.010)){
       if(ran>0.2) continue;
    
-
       } */
 
       /*
@@ -110,7 +115,6 @@ void AllPixFEI4Digitizer::Digitize(){
 	}
   
       */
-
 
       if((yCoord<0.025 && yCoord>0.017)  || (yCoord>-0.004 && yCoord<0.004)  || (yCoord>-0.020 && yCoord<-0.018) ) {
         flag=1;
@@ -125,20 +129,14 @@ void AllPixFEI4Digitizer::Digitize(){
       std::cout<<(*hitsCollection)[itr]->GetPosWithRespectToPixel().x()<<std::endl; 
     }
 
-
-
     if(hcID==4){
       X1.push_back((*hitsCollection)[itr]->GetPosWithRespectToPixel().x());
       Y1.push_back((*hitsCollection)[itr]->GetPosWithRespectToPixel().y());
     }
 
-
-
-
     tempPixel.first  = (*hitsCollection)[itr]->GetPixelNbX();
     tempPixel.second = (*hitsCollection)[itr]->GetPixelNbY();
     pixelsContent[tempPixel] += (*hitsCollection)[itr]->GetEdep();
-
 
   }
 
@@ -152,6 +150,7 @@ void AllPixFEI4Digitizer::Digitize(){
     h->Write();
     tin->Close();
   }
+
   if(total_iter==100000 && hcID==4){
     TFile *tin1;
     tin1 = new TFile("In_Pixel.root","UPDATE");
@@ -161,18 +160,11 @@ void AllPixFEI4Digitizer::Digitize(){
     for(unsigned int i=0; i<X1.size();i++){
       h1->Fill(X1[i],Y1[i]);      
     }
+
     h1->Write();
     tin1->Close();
+
   }
-
-
-
-
-
-
-
-
-
 
   // Now create digits, one per pixel
   // Second entry in the map is the energy deposit in the pixel
@@ -188,15 +180,6 @@ void AllPixFEI4Digitizer::Digitize(){
   // AllPixGeoDsc * GetDetectorGeoDscPtr()
   // provides you with a pointer to the geometry description.
   // See class AllPixGeoDsc !
-
-
-
-
-
-
-
-
-
        
   for( ; pCItr != pixelsContent.end() ; pCItr++)
     { 
@@ -204,9 +187,6 @@ void AllPixFEI4Digitizer::Digitize(){
       if((*pCItr).second > m_digitIn.thl) // over threshold !
 	{
                           
-
-
-
 	  // Create one digit per pixel, I need to look at all the pixels first
 	  AllPixFEI4Digit * digit = new AllPixFEI4Digit;
 	  digit->SetPixelIDX((*pCItr).first.first);
@@ -218,6 +198,9 @@ void AllPixFEI4Digitizer::Digitize(){
 	}
     }
 
+// ---> Mute Mode <--- Wu Qi
+  if (!qiwu_mute) {
+
   G4int dc_entries = m_digitsCollection->entries();
   if(dc_entries > 0){
     G4cout << "--------> Digits Collection : " << collectionName[0]
@@ -225,8 +208,8 @@ void AllPixFEI4Digitizer::Digitize(){
 	   << " contains " << dc_entries
 	   << " digits" << G4endl;
   }
+}
+// ---> Mute Mode <--- Wu Qi
 
   StoreDigiCollection(m_digitsCollection);
-
-
 }

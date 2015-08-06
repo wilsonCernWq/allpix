@@ -76,7 +76,10 @@
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-AllPixDetectorConstruction::AllPixDetectorConstruction()
+AllPixDetectorConstruction::AllPixDetectorConstruction(bool mode)
+  // ---> Mute Mode <--- Wu Qi
+  :qiwu_mute(mode)
+  // ---> Mute Mode <--- Wu Qi
 {
 	//m_detConstruction = dc;
 	//m_tgeoManager = gm;
@@ -875,6 +878,9 @@ void AllPixDetectorConstruction::BuildPixelDevices(map<int, AllPixGeoDsc *> geoM
 				posDevice,
 				geoMap[*detItr],
 				m_rotVector[(*detItr)] );
+		// ---> Mute Mode < --- Wu Qi
+		aTrackerSD->MuteMode(qiwu_mute);
+		// ---> Mute Mode < --- Wu Qi
 
 		SDman->AddNewDetector( aTrackerSD );
 		m_Pixel_log[(*detItr)]->SetSensitiveDetector( aTrackerSD );
