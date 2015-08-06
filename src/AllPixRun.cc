@@ -230,27 +230,36 @@ void AllPixRun::FillTelescopeFiles(const G4Run* aRun, G4String folderName, G4boo
 	char date[80];
 	strftime(date,sizeof(date),"%b %d %H:%M:%S.000 %Y",gmtime(&newtime));
 
-	// open Timepix Telescope output file for this run
-	TString filename = TString::Format("%s/mpx-%s-0_%i.txt",folderName.data(),filedate,runID);
+	// open Timepix Telescope output file for this run   ATTENTO CAmbia questo
+//	TString filename = TString::Format("%s/mpx-%s-0_%i.txt",folderName.data(),filedate,runID);
+        TString filename = TString::Format("%s/mpx-0_%i.txt",folderName.data(),runID);
 	G4cout << "Path to file: " << filename << G4endl;
 	ofstream tpixtelescope_f(filename);
-
+        int j=0;
 	// loop on data from this run, map filled by RecordTelescopeDigits
 	map<int,vector<vector<vector<int> > > >::iterator itr;
 	for (itr = m_data.begin(); itr != m_data.end(); itr++)
 	{
+                 j=j+1;
 		// for each telescope plane
 		int detId = itr->first;
-
+                double x1=0.1, y1=0.2;
 		// header line for each plane
-		tpixtelescope_f << "# Start time (string) : " << date
+	/*	tpixtelescope_f << "# Start time (string) : " << date     //---fdibello
 				<< " # Start time : " << seconds+runID << ".000"
 				<< " # Acq time : 0.000000 # ChipboardID : Chip_" << detId
 				<< " # DACs : 5 100 255 127 127 0 405 7 130 128 80 62 128 128 # Mpx type : 3 # Timepix clock : 40 "
 				<< " # Eventnr " << runID
 				<< " # RelaxD 2 devs 4 TPX DAQ = 0x110402 = START_HW STOP_HW MPX_PAR_READ COMPRESS=1"
-				<< endl;
-
+				<< endl; */
+              if(j==1){
+              tpixtelescope_f << x1 << "\t" << y1 << "\t" << detId << endl;
+              tpixtelescope_f << 0 << "\t" << 0 << "\t" << detId << endl;
+              tpixtelescope_f << x1 << "\t" << y1 << "\t" << detId << endl;
+              } 
+              else {
+              tpixtelescope_f << x1 << "\t" << y1 << "\t" << detId << endl;
+              }
 		// maps to store multiple hits per pixel
 		map<int,int> map_xyTOT;
 		map<int,vector<int> > map_xyEvent;
@@ -258,7 +267,7 @@ void AllPixRun::FillTelescopeFiles(const G4Run* aRun, G4String folderName, G4boo
 		// loop on events
 		vector<vector<vector<int> > > v_events = itr->second;
 		for ( unsigned int i=0; i<v_events.size(); i++ )
-		{
+		{                
 			// loop on digits for this event
 			vector<vector<int> > v_digits = v_events[i];
 			for ( unsigned int j=0; j<v_digits.size(); j++ )
@@ -310,7 +319,6 @@ void AllPixRun::FillTelescopeFiles(const G4Run* aRun, G4String folderName, G4boo
 				int x = division.quot; // pixel x coordinate
 				int y = division.rem;  // pixel y coordinate
 				int tot = map_itr->second;
-
 				/*
 				 * if more than on digit for a given pixel, evID is set to -1
 				 * else print eventID
@@ -333,8 +341,8 @@ void AllPixRun::FillTelescopeFiles(const G4Run* aRun, G4String folderName, G4boo
 				}
 				else
 				{
-					tpixtelescope_f << x << "\t" << y << "\t" << tot << endl;
-				}
+                                  tpixtelescope_f << x << "\t" << y << "\t" << tot << "\t" << endl;
+			  }	
 			}
 		}
 	}
