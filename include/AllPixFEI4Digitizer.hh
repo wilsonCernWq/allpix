@@ -44,6 +44,10 @@ private:
   vector<G4String> m_hitsColName;
   G4PrimaryVertex * m_primaryVertex; // information from EventAction
 
+  // guess from Qi Wu
+  int total_iter = 0;
+  vector<G4double> X, Y;
+  vector<G4double> X1, Y1;
 };
 
 #endif
