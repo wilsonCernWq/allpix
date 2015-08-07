@@ -50,6 +50,8 @@
 
 #include "G4ThreeVector.hh"
 
+#include <sstream>
+#include <cstdlib>
 #include <vector>
 #include <stdio.h>
 #include <utility>

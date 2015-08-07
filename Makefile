@@ -1,16 +1,16 @@
 # --------------------------------------------------------------
 # Makefile for examples module
 # --------------------------------------------------------------
-
 #export EUTELESCOPE=1
 
 name = allpix
 G4TARGET = $(name)
 G4EXLIB = true
 
-
 .PHONY: all
 all: rootdict lib bin
+	@mkdir -p ./lib
+	@mv SelDict_rdict.pcm ./lib
 
 rootdict:	./include/*.hh ./include/*.h
 	@echo "Generating dictionary $@..."
@@ -19,11 +19,13 @@ rootdict:	./include/*.hh ./include/*.h
 		AllPix_Frames_WriteToEntuple.h allpix_dm.h \
 		AllPixDigitAnimation.hh LinkDef.h
 	@mv SelDict.cc ./src
-#	@mv SelDict.h ./include/
 # the geant4 makefile will compile the dictionary
 
+cleanup: clean
+	rm -f ./lib/SelDict_rdict.pcm
+
 cleanroot:
-	rm -f src/SelDict.* include/SelDict.* SelDict.* 
+	rm -f src/SelDict.* include/SelDict.* SelDict.*
 
 include $(G4INSTALL)/config/binmake.gmk
 include ./flags.gmk
@@ -33,4 +35,3 @@ ifdef EUTELESCOPE
 else
 	INCFLAGS += -D_SINGLE
 endif
-

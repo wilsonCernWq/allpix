@@ -142,7 +142,6 @@ void AllPixDetectorConstruction::DefineSensitiveDetector(){
 
 G4VPhysicalVolume * AllPixDetectorConstruction::Construct()
 {
-
 	// Clean old geometry, if any
 	G4GeometryManager::GetInstance()->OpenGeometry();
 	G4PhysicalVolumeStore::GetInstance()->Clean();
@@ -200,8 +199,19 @@ G4VPhysicalVolume * AllPixDetectorConstruction::Construct()
 
 		G4cout << "Clearance obtained to build the pixel devices." << G4endl;
 
+		// ---> Path Independent Running <--- Wu Qi
+		// ---> Get Envar <--- Wu Qi
+		std::string allpix_dir;
+		if(const char* env_p = std::getenv("ALLPIXDIR")) {
+		  allpix_dir = std::string(env_p);
+		} else {
+		  allpix_dir = std::string(".");
+		}
+		// ---> Get Envar <--- Wu Qi
+		// ---> Path Independent Running <--- Wu Qi
+
 		// Read the database
-		ReadGeoDescription * m_geoDsc = new ReadGeoDescription("./models/pixeldetector.xml");
+		ReadGeoDescription * m_geoDsc = new ReadGeoDescription((allpix_dir + "/models/pixeldetector.xml").c_str());
 
 		// Don't keep in the database the detectors which are not used.
 		// Searching the id's
