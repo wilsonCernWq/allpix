@@ -75,10 +75,10 @@
 
 ####################################################################
 # Scintillators
-/allpix/eudet/scint1Pos 0.0  0.0 -24.0 mm # offset of 18mm +/- 6mm
-/allpix/eudet/scint2Pos 0.0  0.0 -18.0 mm
-/allpix/eudet/scint3Pos 0.0  0.0 690.8 mm
-/allpix/eudet/scint4Pos 0.0  0.0 696.8 mm
+#/allpix/eudet/scint1Pos 0.0  0.0 -24.0 mm # offset of 18mm +/- 6mm
+#/allpix/eudet/scint2Pos 0.0  0.0 -18.0 mm
+#/allpix/eudet/scint3Pos 0.0  0.0 690.8 mm
+#/allpix/eudet/scint4Pos 0.0  0.0 696.8 mm
 
 ####################################################################
 # Build detectors
