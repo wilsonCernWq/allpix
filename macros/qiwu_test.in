@@ -1,6 +1,5 @@
 ####################################################################
-# EUDET Planes
-
+# DET Planes
 # Al Holder
 /allpix/extras/setTestStructureType 1
 /allpix/extras/setTestStructurePosition 0. 0. 0. mm
@@ -103,7 +102,8 @@
 /vis/scene/add/volume World -1 2
 /vis/viewer/set/style surface
 
-#/vis/open OIX 1024x768-100+100
+# -- Switch for visualization
+/vis/open OIX 1024x768-100+100
 
 #/vis/open OGLIXm 1024x768-100+100
 #/vis/open RayTracer
@@ -135,6 +135,7 @@
 ####################################################################
 # Write Telescope files
 /allpix/timepixtelescope/setFolderPath	./EUTelescopeFiles/test
+/allpix/timepixtelescope/setFolderPath	/home/qiwu/AllpixFiles/test
 /allpix/timepixtelescope/setEventIDcolumn 0
 /allpix/timepixtelescope/setSumTOT 1
 /allpix/timepixtelescope/write 1
@@ -145,22 +146,23 @@
 /gps/pos/type Plane
 /gps/pos/shape Rectangle
 /gps/pos/centre 0.0 0.0 -1000.0 mm
-/gps/pos/halfy 5500. um
-/gps/pos/halfx 5500. um
+/gps/pos/halfy 11000. um
+/gps/pos/halfx 11000. um
 /gps/direction 0 0 1
+/gps/energy 180 GeV
 
 # Source GPS circle
 #/gps/particle e-
-#/gps/pos/type Beam
-#/gps/pos/sigma_r 5.0 mm
-#/gps/pos/centre 0.0 0.0 -100.0 mm
-#/gps/direction  0 0 1
-
-# Source GPS energy
-/gps/energy 180 GeV
+#/gps/pos/type Plane
+#/gps/pos/shape Rectangle
+#/gps/pos/centre 0.0 0.0 -1000.0 mm
+#/gps/pos/halfy 11000. um
+#/gps/pos/halfx 11000. um
+#/gps/direction 0 0 1
+#/gps/energy 5.6 GeV
 
 ####################################################################
 # Shoot
-/allpix/beam/frames 5000
+/allpix/beam/frames 99
 /allpix/beam/type const 1
 /allpix/beam/on

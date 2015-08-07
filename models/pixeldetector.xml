@@ -36,7 +36,7 @@
 <sensor_gr_excess_hleft units="um">500.0</sensor_gr_excess_hleft>
 
 <sensor_posx units="mm">0</sensor_posx>
-<sensor_posy units="mm">15.0</sensor_posy>
+<sensor_posy units="mm">22.0</sensor_posy>
 <sensor_posz units="mm">0.</sensor_posz>
 
 <bump_radius units="um">9.0</bump_radius>
