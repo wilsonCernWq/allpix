@@ -64,10 +64,6 @@ void AllPixQiWuDigitizer::Digitize(){
     G4ThreeVector vec = (*hitsCollection)[itr]->GetPosWithRespectToPixel();
     G4double r2 = vec.x() * vec.x() + vec.y() * vec.y();
 
-    G4cout << "##############################################################" << G4endl;
-    G4cout << r2 << "<-- real ------------ defiend -->" << re * re << G4endl;
-    G4cout << "##############################################################" << G4endl;
-
     // cylinder constraint
     if (r2 < re * re) { 
 
