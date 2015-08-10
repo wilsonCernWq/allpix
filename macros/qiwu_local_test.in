@@ -134,7 +134,7 @@
 
 ####################################################################
 # Write Telescope files
-/allpix/timepixtelescope/setFolderPath	./EUTelescopeFiles/test
+/allpix/timepixtelescope/setFolderPath	/home/qiwu/AllpixFiles/test
 /allpix/timepixtelescope/setEventIDcolumn 0
 /allpix/timepixtelescope/setSumTOT 1
 /allpix/timepixtelescope/write 1
