@@ -1,5 +1,6 @@
 #!/bin/bash
 TRASH=~/.local/share/Trash/files
+mv G4History.macro $TRASH
 mv hitFunction.root $TRASH
 mv Hits_*_HitsCollection.root $TRASH
 mv MPXNtuple_allPix_det_*.root $TRASH
