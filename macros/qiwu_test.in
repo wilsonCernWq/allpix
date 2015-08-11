@@ -162,6 +162,6 @@
 
 ####################################################################
 # Shoot
-/allpix/beam/frames 99
-/allpix/beam/type const 20
+/allpix/beam/frames 10000
+/allpix/beam/type const 1
 /allpix/beam/on
