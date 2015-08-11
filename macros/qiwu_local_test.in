@@ -145,8 +145,8 @@
 /gps/pos/type Plane
 /gps/pos/shape Rectangle
 /gps/pos/centre 0.0 0.0 -1000.0 mm
-/gps/pos/halfy 11000. um
-/gps/pos/halfx 11000. um
+/gps/pos/halfy 5330. um
+/gps/pos/halfx 5330. um
 /gps/direction 0 0 1
 /gps/energy 180 GeV
 
@@ -155,11 +155,10 @@
 #/gps/pos/type Plane
 #/gps/pos/shape Rectangle
 #/gps/pos/centre 0.0 0.0 -1000.0 mm
-#/gps/pos/halfy 11000. um
-#/gps/pos/halfx 11000. um
+#/gps/pos/halfy 5330. um
+#/gps/pos/halfx 5330. um
 #/gps/direction 0 0 1
 #/gps/energy 5.6 GeV
-
 ####################################################################
 # Shoot
 /allpix/beam/frames 99
